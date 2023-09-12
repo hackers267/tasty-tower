@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
 const pageTitle= "关于我";
 
 const identity = {
@@ -17,7 +18,7 @@ const skillColor = "red";
 ---
 
 <Layout title={pageTitle}>
-  <Navigation />
+  <Header />
   <h1>关于我</h1>
   <h2>....和我的 Astro 网站</h2>
   <p>我正在学习 Astro 的入门教程。这是我网站上的第二个页面，也是我自己建立的第一个页面。</p>
@@ -35,6 +36,7 @@ const skillColor = "red";
   {happy && <p>我很开心!</p>}
   {finished && <p>我已经完成了!</p>}
   {goal === 3 ? <p>我目标是达成 3</p> : <p>我目标未达成 3</p>}
+  <Footer />
 </Layout>
 <style define:vars={{skillColor}}>
   h1 {
