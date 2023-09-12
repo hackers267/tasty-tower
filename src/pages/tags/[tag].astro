@@ -3,14 +3,11 @@ import Layout from "../../layouts/Layout.astro";
 import BlogPost from "../../components/BlogPost.astro";
 export async function getStaticPaths() {
   const allPosts = await Astro.glob("../posts/*.md");
-  return [
-    { params: { tag: "astro" }, props: { posts: allPosts} },
-    { params: { tag: "successes" } , props: { posts: allPosts}},
-    { params: { tag: "community" } , props: { posts: allPosts}},
-    { params: { tag: "blogging" } , props: { posts: allPosts}},
-    { params: { tag: "setbacks" } , props: { posts: allPosts}},
-    { params: { tag: "learning in public" } , props: { posts: allPosts}},
-  ];
+  const tags = allPosts.flatMap(post=>post.frontmatter.tags);
+  const all = [...new Set(tags)];
+  return all.map(tag=>{
+    return {params: { tag }, props: {posts: allPosts}}
+  });
 }
 
 const { tag } = Astro.params;
