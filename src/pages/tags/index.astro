@@ -1,0 +1,35 @@
+---
+import Layout from "../../layouts/Layout.astro";
+const allPosts = await Astro.glob("../posts/*.md");
+const allTags = allPosts.flatMap(post=>post.frontmatter.tags);
+const tags = [...new Set(allTags)];
+const pageTitle = "Tag Index";
+---
+
+<Layout title={pageTitle}>
+  <ul class="tags">
+    {tags.map(tag=>{
+      return <li class="tag"><a href={`/tags/${tag}`}>{tag}</a></li>
+    })}
+  </ul>
+</Layout>
+<style>
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+.tag {
+  margin: 0.25em;
+  border: dotted 1px #a1a1a1;
+  border-radius: 0.5em;
+  padding: 0.5em 1em;
+  font-size: 1.15em;
+  background-color: #F8FCFD;
+  list-style: none;
+}
+a {
+  color: #00539F;
+  text-decoration: none;
+}
+</style>
