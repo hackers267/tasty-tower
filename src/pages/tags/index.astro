@@ -1,4 +1,5 @@
 ---
+import Navigation from "../../components/Navigation.astro";
 import Layout from "../../layouts/Layout.astro";
 const allPosts = await Astro.glob("../posts/*.md");
 const allTags = allPosts.flatMap(post=>post.frontmatter.tags);
@@ -7,6 +8,7 @@ const pageTitle = "Tag Index";
 ---
 
 <Layout title={pageTitle}>
+  <Navigation />
   <ul class="tags">
     {tags.map(tag=>{
       return <li class="tag"><a href={`/tags/${tag}`}>{tag}</a></li>
