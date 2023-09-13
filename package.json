@@ -13,6 +13,9 @@
     "@astrojs/preact": "^3.0.0",
     "@astrojs/rss": "^3.0.0",
     "astro": "^3.0.12",
-    "preact": "^10.6.5"
+    "preact": "^10.6.5",
+    "rehype-katex": "^6.0.3",
+    "rehype-mathjax": "^4.0.3",
+    "remark-math": "^5.1.1"
   }
 }
